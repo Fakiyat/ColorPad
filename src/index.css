@@ -32,7 +32,7 @@ button {
 button.on {
   opacity: 1;
 }
-button.all-off {
+button.all-toggle {
   all: unset;
   color: white;
   background-color: #b91c1c;

@@ -4,7 +4,7 @@ import PadButton from "./padButton";
 
 function App() {
   const [pads, setPads] = useState(padsData);
-  // const { allOn, setAllOn } = useState(false);
+  const [allOn, setAllOn] = useState(false);
 
   console.log(pads);
 
@@ -16,13 +16,13 @@ function App() {
     );
   }
   function turnAllPads() {
-    console.log("Turning off");
     setPads((prevPads) =>
       prevPads.map((pad) => ({
         ...pad,
-        on: false, // toggle based on current value
+        on: !allOn, // toggle based on current value
       }))
     );
+    setAllOn((prev) => !prev);
   }
 
   const buttonElements = pads.map((pad) => (
@@ -38,8 +38,8 @@ function App() {
   return (
     <main>
       <div className="pad-container">{buttonElements}</div>
-      <button className="all-off" onClick={turnAllPads}>
-        Turn all off
+      <button className="all-toggle" onClick={turnAllPads}>
+        {allOn ? "Turn all off" : "Turn All On"}
       </button>
     </main>
   );
